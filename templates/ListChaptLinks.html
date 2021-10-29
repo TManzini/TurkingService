@@ -1,0 +1,17 @@
+<html>
+	<head>
+		<title>MCQ Paragraph Options</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="icon" href="/static/Mountain.png">
+	</head>
+	<body>
+		<h2>MCQ Paragraph Options</h2>
+		{% if paraList %}
+			{{ paraList|safe }}
+		{% endif %}
+		<hr>
+		{% if message %}
+			{{ message|safe }}
+		{% endif %}
+	</body>
+</html>

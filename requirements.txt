@@ -1,0 +1,12 @@
+appdirs==1.4.3
+certifi==2020.4.5.1
+click==7.1.2
+Flask==1.1.2
+idna==2.9
+itsdangerous==1.1.0
+Jinja2==2.11.2
+MarkupSafe==1.1.1
+passlib==1.7.2
+uritools==3.0.0
+urlextract==0.14.0
+Werkzeug==1.0.1

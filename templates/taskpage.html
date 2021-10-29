@@ -1,0 +1,123 @@
+<html>
+	<head>
+		<title>Annotation Task</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<style>
+			div.a0{
+				display: flex;
+			}
+			div.a1 {
+   				border: 1px solid black;
+   				width:800px;
+   				margin:10px auto;
+   				height:95%;
+   				float:left;
+   				flex: 1; 
+   				overflow-y: scroll;
+			}
+			div.a2 {
+   				border: 1px solid black;
+   				width:800px;
+   				margin:10px auto;
+   				height:95%;
+   				float:right;
+   				flex: 1; 
+   				overflow-y: scroll;
+			}
+			div.hilight{
+				border: 1px solid black;
+				width:50%;
+				padding-left: 2%;
+				padding-right: 2%;
+				padding-top: 2%;
+				padding-bottom: 2%;
+			}
+		</style>
+	</head>
+	<body>
+		<center>
+			<h1>Annotation Task</h1>
+		</center>
+		<form method="POST" id="qa_form">
+		<div class="a0">
+			<div class="a2">
+				<div style="padding-left: 5%;">
+						<h3>Text To Annotate</h3>
+				</div>
+				<div>
+					<p id="sourcePara" class="text-center" style="padding-left:10%;padding-right:10%;font-size:100%"><br>{{ sourceParagraph }}</p>
+					<textarea style="display:none;" class="form-control" id="sourceParaHidden" name="sourceParaHidden" readonly="readonly" required="" type="hidden">{{ sourceParagraph }}</textarea>
+				</div>
+			</div>
+			<div class="a1">
+				<div style="padding-left: 5%;">
+					<h3>Instructions</h3>
+				</div>
+				<p style="padding-left:10%;padding-right:10%;font-size:100%"><br>{{ instructions|safe }}</p>
+				<center>
+					<p>
+						{% if message %}
+							<font color="red">{{ message|safe }}</font>
+						{% endif %}
+					</p>
+				</center>
+				<hr>
+					<div style="padding-left: 5%;">
+						<h3>Label Information</h3>
+					</div>
+					<div style="padding-left:10%">
+						<div class="hilight">
+							<i>Sections you highlighted:</i>
+							<br>
+							<ul id="sourceParalist">
+							</ul>
+							<button type="button" id="sourceParaRemove">Reset Highlights</button>
+						</div>
+					</div>
+					<div style="padding-left:10%;padding-right:10%;font-size:100%">
+						<p>Based on the content of the document please check ONE of the following boxes:</p>
+						<form>
+							<input type="checkbox" name="docLabel" value="NotHumanReadable">This document is not human readable.</br>
+						</form>
+						</br>
+						<input type="submit" id="submit" value="Submit">
+						</br>
+						</br>
+					</div>
+				</div>
+			</div>
+		</form>
+	</body>
+	<script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script><script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js" integrity="sha384-s1ITto93iSMDxlp/79qhWHi+LsIi9Gx6yL+cOKDuymvihkfol83TYbLbOw+W/wv4" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/texthighlighter/1.2.0/TextHighlighter.min.js"></script>
+	<script>
+$(document).ready(function() {
+
+	function matchTexts() {
+		$("#sourceParaHidden").val($("#sourcePara").html());
+		
+		$("#sourceParalist li").remove()
+		$("#sourcePara span").each( function(index) {
+			$("#sourceParalist").append($("<li style='font-size:90%;'>").text($(this).text()));
+		});
+    }
+
+	var sourceParaRemoveBtn = document.getElementById('sourceParaRemove');
+	var speakerHltr = new TextHighlighter($("#sourcePara").get()[0],
+		{ 
+			onAfterHighlight: function(range, hl)
+			{
+				matchTexts();
+			},
+			onRemoveHighlight: function(hl) 
+			{
+				return true;
+			}
+		});
+
+	sourceParaRemoveBtn.addEventListener('click', function () {
+		speakerHltr.removeHighlights();
+		matchTexts();
+	});
+});
+	</script>
+</html>

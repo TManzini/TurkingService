@@ -1,0 +1,34 @@
+<html>
+	<head>
+		<title>MCQ Paras</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="icon" href="/static/Mountain.png">
+		<script type="text/javascript">
+function confSubmit(form) {
+	if (confirm("Are you sure you want to delete this entry?")) {
+		form.submit();
+	}
+
+	else {
+		alert("Not deleted");
+	}
+}
+	</script>
+	</head>
+	<body>
+		<h2>All Paragraphs</h2>
+		{% if paraList %}
+			{{ paraList|safe }}
+		{% endif %}
+		<form method="POST">
+			<h2>Create New Paragraph</h2>
+			<p>Please enter the name of the paragraph - an ID will be automatically assigned</p>
+			<input name="paraTitle"></br>
+			<p>Please enter the contents of the paragraph - please ensure that there are no non-ascii characters and there are no escape characters</p>
+			<textarea rows="5" cols="200" name="paraContent"></textarea></br>
+			<input type="submit"></br>
+		</form>
+		<hr>
+		<a href="/admin-cms/dataSources">Return to Data Source List</a>
+	</body>
+</html>

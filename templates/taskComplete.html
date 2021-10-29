@@ -1,0 +1,20 @@
+<html>
+	<head>
+		<title>Annotation Task</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+	<body>
+		<center>
+			<h1>Your Annotations Have Been Recorded</h1>
+			<p>Would you like to continue to annotate?</p>
+			<a href="/">CLICK HERE TO CONTINUE</a>
+		</center>
+		<center>
+			<p> Here is a unique token for your annotations: 
+				{% if completion_token %}
+					<font color="red">{{ completion_token }}</font>
+				{% endif %}
+			</p>
+		</center>
+	</body>
+</html>

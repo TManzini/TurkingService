@@ -1,0 +1,49 @@
+<html>
+	<head>
+		<title>Annotation Task</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<style>
+		div.a {
+   				border: 1px solid black;
+   				width:800px;
+   				margin:10px auto;
+			}
+		</style>
+	</head>
+	<body>
+		<center>
+			<h1>Annotation Task</h1>
+		</center>
+		<div class="a">
+			<div style="padding-left: 5%;">
+				<h3>Instructions</h3>
+			</div>
+			<p id="sourcePara" class="text-center" style="padding-left:7%;padding-right:7%;font-size:100%"><br>{{ instructions|safe }}</p>
+		</div>
+		<center>
+			<form method="POST">
+				<table>
+						<tr>
+							<th>
+								<div align="right">
+  								Contact Alias:</br>
+  								&nbsp;</br>
+  							</div>
+  						</th>
+  						<th>	
+  							<div align="left">
+								<input name="USER_ID"></br>
+								<input type="submit"></br>
+							</div>
+						</th>
+					</tr>
+				</table>								
+			</form>
+			<p>
+				{% if message %}
+					<font color="red">{{ message }}</font>
+				{% endif %}
+			</p>
+		</center>
+	</body>
+</html>

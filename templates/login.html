@@ -1,0 +1,38 @@
+<html>
+	<head>
+		<title>MCQ Admin Login</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+	<body>
+		<center>
+			<p>Please enter username and passowrd:</p>
+		</center>
+		<center>
+			<form method="POST">
+				<table>
+						<tr>
+							<th>
+								<div align="right">
+  								Username:</br>
+  							    Password:</br>
+  								&nbsp;</br>
+  							</div>
+  						</th>
+  						<th>	
+  							<div align="left">
+								<input name="username"></br>
+								<input name="password" type="password"></br>
+								<input type="submit"></br>
+							</div>
+						</th>
+					</tr>
+				</table>								
+			</form>
+			<p>
+				{% if errorMsg %}
+					<font color="red">{{ errorMsg }}</font>
+				{% endif %}
+			</p>
+		</center>
+	</body>
+</html>

@@ -1,0 +1,10 @@
+{
+	"output_path" : "./annotations/sample_output.json",
+	"participating_users_output_path" : "./annotations/particpating_users.json",
+	"input_path" : "./data/sample_data.json",
+	"task_template_path" : "./taskpage.html",
+	"admin_users_path" : "./data/sample_admin_users.json",
+	"samples_per_task" : 3,
+	"welcome_page_instructions" : "This is where you place your welcome instructions. These instructions will appear when a user comes to the task url for the fisrt time. These instructions can be formatted using HTML! For example...<br/> You should ask the user to enter some kind of user name because the user name they enter will be logged with a timestamp and hash upon completion. You will be able to inspect this data as a way to verify who completed the tasks.<br/> Tell the user they should press the submit button to continue.",
+	"task_page_instructions" : "This is where you should put your task instructions. Tell the user that they will need to do the task that is defined within your template. This may involve highlighting text, answering questions, checking boxes, or something else. The quality of these instructions are VERY IMPORTANT and it is necessary that they be clear and simple. Tell the users that they should press submit when they believe that they are done."
+}
