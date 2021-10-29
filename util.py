@@ -21,34 +21,33 @@ def getChaptListHTML(data_source_controller):
 			res += '<a href="/MCQ-Task/' + str(data_source.getSourceId()) +"/" + str(paragraph.getParagraphId()) + '">' + str(paragraph.getTitle().encode("ascii", "replace")) + "</a></br>"
 	return res
 
-
 #HTML UTILS BELOW
 
 HL_START_TOKEN = "data-highlighted=\"true\">"
 HL_END_TOKEN = "</span>"
 
 def getParaHtml(dataSourceController, annotation):
-	manual = dataSourceController.getDataSource(annotation.getDataSourceId())
-	paragraph = manual.getParagraph(annotation.getParagraphId())
+	dataSource = dataSourceController.getDataSource(annotation.getDataSourceId())
+	paragraph = dataSource.getParagraph(annotation.getParagraphId())
 	res = paragraph.getContent()
 	return res
 
 def getDataSourceList(dataSourceController):
 	res = "<ul>"
 	dataSources = dataSourceController.getDataSources()
-	for manId, manual in dataSources.items():
-		res += "<li><a href=\"/admin-cms/dataSources/" + str(manId) + "/\">" + str(manual.getName()) + "</a><form method=\"POST\" action=\"/admin-cms/dataSources/remove/" + str(manId) + "/\"><input type=\"button\" value=\"Delete This Manual\" onclick=\"confSubmit(this.form);\"></form></li>"
+	for manId, dataSource in dataSources.items():
+		res += "<li><a href=\"/admin-cms/dataSources/" + str(manId) + "/\">" + str(dataSource.getName()) + "</a><form method=\"POST\" action=\"/admin-cms/dataSources/remove/" + str(manId) + "/\"><input type=\"button\" value=\"Delete This dataSource\" onclick=\"confSubmit(this.form);\"></form></li>"
 	res += "</ul>"
 	return res
 
-def getParaList(dataSourceController, manualId):
+def getParaList(dataSourceController, dataSourceId):
 	res = ""
-	paragraphs = dataSourceController.getDataSource(manualId).getParagraphs()
+	paragraphs = dataSourceController.getDataSource(dataSourceId).getParagraphs()
 	for paraId, para in paragraphs.items():
 		res += "<p><b>ID: </b>" + str(para.getParagraphId()) + "</p>"
 		res += "<p><b>Title: </b>" + str(para.getTitle()) + "</p>"
 		res += "<p><b>Content: </b>" + str(para.getContent()) + "</p>"
-		res += "<form method=\"POST\" action=\"/admin-cms/dataSources/" + str(manualId) + "/remove/" + str(paraId) + "/\"><input type=\"button\" value=\"Delete This Parapgraph\" onclick=\"confSubmit(this.form);\"></form>"
+		res += "<form method=\"POST\" action=\"/admin-cms/dataSources/" + str(dataSourceId) + "/remove/" + str(paraId) + "/\"><input type=\"button\" value=\"Delete This Parapgraph\" onclick=\"confSubmit(this.form);\"></form>"
 		res += "<hr>"
 	return res
 

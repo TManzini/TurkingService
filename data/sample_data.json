@@ -17,6 +17,11 @@
                 "contents": "Wow, what an amazing extra paragraph!",
                 "id": 2,
                 "title": "test1.txt"
+            },
+            {
+                "contents": "And it gets even awesomer",
+                "id": 3,
+                "title": "test2.txt"
             }
         ]
     }
