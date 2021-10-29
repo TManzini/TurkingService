@@ -46,7 +46,7 @@ Play around with the sample data and the sample task to get an understanding of 
 While the service is running you are able to added and delete data on the fly. 
 You can do this with an admin user account.
 An admin user account can be created using the createUsers.py script in the /scripts folder.
-You then go to URL_TO_TASK/admin-cms to access the admin content management system (CMS).
+You then go to URL_TO_TASK/admin-cms (usually this is something like 127.0.0.1:5000/admin-cms) to access the admin content management system (CMS).
 Log in with the user name and password that you entered in the createUsers.py script.
 From here you are able to add or remove datasets and samples from the data you are working with.
 Note that on login your password is transmitted to the service clear text, but it is never stored in clear text on the service.
